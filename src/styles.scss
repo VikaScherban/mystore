@@ -2,3 +2,24 @@
 
 @import 'styles-config';
 @import '@spartacus/styles/index';
+@import 'styles/custom/index';
+
+body {
+  --cx-color-primary: #8b8b81;
+  --cx-color-secondary: #8b8b81;
+  --cx-color-text: #5c7069;
+  --cx-color-background: #f5f5f5;
+  --cx-color-dark: #555555;
+  --cx-page-width-max: 1440px;
+  --cx-buttons-border-radius: 6px;
+  background-color: $off-white;
+  font-family: "Montserrat", sans-serif;
+}
+
+cx-register {
+  @include container(20px);
+}
+
+cx-login-form {
+  @include container(26px);
+}

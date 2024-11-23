@@ -1,0 +1,25 @@
+<div class="st-cart mt-5 mb-5 st-cart-action">
+  <ng-container *ngIf="cart$ | async as cart">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="p-2">
+        <button class="link cx-action-link" [routerLink]="{ cxRoute: 'savedCarts' } | cxUrl" cxAutoFocus>
+          <span>{{ 'addToSavedCart.savedCarts' | cxTranslate }}</span>
+        </button>
+      </div>
+      <div class="p-2">
+        <button #element class="link cx-action-link" (click)="saveCart(cart)" cxAutoFocus>
+          <span>{{ 'addToSavedCart.saveCartForLater' | cxTranslate }}</span>
+        </button>
+      </div>
+      <div class="p-2">
+        <button
+          *ngIf="(entries$ | async) as entries"
+          class="link cx-action-link"
+          (click)="exportCsv(entries)"
+        >
+          {{ 'exportEntries.exportToCsv' | cxTranslate }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div>

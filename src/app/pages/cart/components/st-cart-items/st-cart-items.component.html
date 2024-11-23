@@ -1,0 +1,43 @@
+<div *ngIf="hasHeader" class="st-cart-header d-none d-md-block d-lg-block d-xl-block">
+  <div class="cx-item-list-header row">
+    <div class="cx-item-list-desc col-md-4 col-lg-4 col-xl-4">
+      {{ 'cartItems.description' | cxTranslate }}
+    </div>
+    <div class="cx-item-list-qty col-md-2 col-lg-3 col-xl-3">
+      {{ 'cartItems.quantity' | cxTranslate }}
+    </div>
+
+    <ng-container *ngIf="options.isSaveForLater; else totalHeader">
+      <div class="cx-item-list-total col-md-2 col-lg-2 col-xl-2">
+        {{ 'saveForLaterItems.stock' | cxTranslate }}
+      </div>
+    </ng-container>
+
+    <div class="cx-item-list-actions col-md-3 col-lg-2 col-xl-3">
+      {{ 'cartItems.actions' | cxTranslate }}
+    </div>
+  </div>
+</div>
+
+<div class="cx-item-list-row" *ngFor="let item of items; let i = index">
+  <div
+    *ngIf="getControl(item) | async as control"
+    class="cx-item-list-items"
+    [class.is-changed]="control.get('quantity')?.disabled"
+  >
+    <st-cart-item
+      [item]="item"
+      [quantityControl]="quantityControl(control)"
+      [readonly]="readonly"
+      [promotionLocation]="promotionLocation"
+      [options]="options"
+    >
+    </st-cart-item>
+  </div>
+</div>
+
+<ng-template #totalHeader>
+  <div class="cx-item-list-total col-md-2 col-lg-2 col-xl-2">
+    {{ 'cartItems.total' | cxTranslate }}
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+@import "colors";
+@import "paddings";
+@import "borders";
+
+@mixin container($padding-value) {
+  padding: $padding-value;
+  background: $platinum;
+  border-radius: $border-radius;
+}
+
+.st-cart-header {
+  font-weight: bold;
+}
+
+.st-cart-header, .st-cart-item {
+  margin: 0!important;
+}
+
+.st-cart, .st-cart-header {
+  padding: $st-cart-padding;
+  background: $platinum;
+  box-shadow: 0 1px 2px rgba(47, 66, 83, 0.14);
+  border-radius: $border-radius;
+}
+
+.st-cart-action {
+  margin: 20px 0!important;
+}
+
+.st-saved {
+  color: var(--cx-color-success);
+  font-weight: bold;
+}
